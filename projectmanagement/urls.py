@@ -19,5 +19,6 @@ from django.urls import path
 from pma import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.welcome),
+    path('',views.signin),
+    path('dashboard/',views.dashboard),
 ]
