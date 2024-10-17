@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect ,get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib import messages
@@ -43,6 +44,7 @@ def createfibranch(request):
         messages.success(request, f'FIBranch {finame} Created Successfully!')
         return redirect('/fiblists')
     return render(request,'manager/createfibranch.html')
+@login_required(login_url='/login')
 def createcases(request):
     fibl=FIbranch.objects.filter(is_active=True)
     if request.method == "POST":
@@ -55,10 +57,12 @@ def createcases(request):
         messages.success(request, f'Case {caseid} Created Successfully!')
         return redirect('/caseslists')
     return render(request,'manager/createcases.html',{'fibl':fibl})
+@login_required(login_url='/login')
 def deletecases(request,id):
     obj = get_object_or_404(Cases, id=id)
     obj.delete()
     return redirect('/caseslists')
+@login_required(login_url='/login')
 def updatecases(request,id):
     fibl=FIbranch.objects.filter(is_active=True)
     obj = get_object_or_404(Cases,id=id)
@@ -73,12 +77,14 @@ def updatecases(request,id):
         messages.success(request, f'Case {obj.caseid} Updated Successfully!')
         return redirect('/caseslists')
     return render(request,'manager/updatecases.html',{'obj':obj,'fibl':fibl})
+@login_required(login_url='/login')
 def deletefibranch(request,id):
     obj = get_object_or_404(FIbranch, id=id)
     finame=FIbranch.objects.get(id=id)
     obj.delete()
     messages.error(request, f'FIbranch {finame.finame} deleted Successfully!')
     return redirect('/fiblists')
+@login_required(login_url='/login')
 def updatefibranch(request,id):
     obj = get_object_or_404(FIbranch, id=id)
     if request.method == "POST":
@@ -88,5 +94,7 @@ def updatefibranch(request,id):
         messages.success(request, f'Case {obj.finame} Updated Successfully!')
         return redirect('/fiblists')
     return render(request,'manager/updatefiblists.html',{'obj':obj})
+@login_required(login_url='/login')
 def employeeslists(request):
+    print("Hello")
     return render(request,'manager/employeeslists.html')
