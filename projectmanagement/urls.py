@@ -19,6 +19,10 @@ from django.urls import path
 from pma import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.signin),
-    path('dashboard/',views.dashboard),
+    path('login/',views.signin),
+    path('',views.dashboard),
+    path('logout/',views.signout),
+    path('caseslists/',views.caseslists),
+    path('fiblists/',views.fiblists),
+    path('createfibranch/',views.createfibranch),
 ]
