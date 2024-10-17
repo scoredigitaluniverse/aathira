@@ -27,7 +27,6 @@ def dashboard(request):
 @login_required(login_url='/login')
 def caseslists(request):
     cl=Cases.objects.filter(is_active=True)
-    print(cl)
     return render(request,'manager/caseslists.html',{'cl':cl})
 @login_required(login_url='/login')
 def fiblists(request):
