@@ -25,4 +25,15 @@ urlpatterns = [
     path('caseslists/',views.caseslists),
     path('fiblists/',views.fiblists),
     path('createfibranch/',views.createfibranch),
+    path('createcases/',views.createcases),
+    path('deletecases/<int:id>',views.deletecases,name='delete_cases'),
+    path('updatecases/<int:id>',views.updatecases,name='updatecases'),
+    path('deletefibranch/<int:id>',views.deletefibranch,name='deletefibranch'),
+    path('updatefibranch/<int:id>',views.updatefibranch,name='updatefibranch'),
+    path('employeeslists/',views.employeeslists),
+    path('createemployees/',views.createemployees),
+    path('updateemployee/<int:id>',views.updateemployee,name='updateemployee'),
+    path('deleteemployee/<int:id>',views.deleteemployee,name='deleteemployee'),
+    path('activeemployee/<int:id>',views.activeemployee,name='activeemployee'),
+
 ]
