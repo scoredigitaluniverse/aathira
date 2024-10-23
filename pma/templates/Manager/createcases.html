@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'manager/base.html' %}
 {% load static %}
 {% block content %}
@@ -56,4 +57,64 @@
       </div>
     </div>
   </div>
+=======
+{% extends 'manager/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <form id="RegisterValidation" method="POST">
+            {% csrf_token %}
+            <div class="card ">
+              <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">file_open</i>
+                </div>
+                <h4 class="card-title">Cases</h4>
+              </div>
+              <div class="card-body ">
+                <div class="form-group">
+                  <label for="caseid" class="bmd-label-floating"> Case Id *</label>
+                  <input type="text" class="form-control" id="caseid" name='caseid' equired="true">
+                </div>
+                <div class="form-group">
+                  <label for="applicantname" class="bmd-label-floating"> Applicant Name *</label>
+                  <input type="text" class="form-control" id="applicantname" name="applicantname" required="true">
+                </div>
+                <div class="form-group">
+                    <label for="mobilenumber" class="bmd-label-floating"> Applicant Mobile Number *</label>
+                    <input type="number" class="form-control" id="mobilenumber" name="mobilenumber" required="true">
+                  </div>
+                  <div class="form-group">
+                    <label for="fibranchname" class="bmd-label-floating"> FI Branach Name *</label>
+                    <select class="custom-select" data-style="select-with-transition" id="fibranchname" name="finame">
+                        <option disabled selected value> -- Select an FIName -- </option>
+                        {% for i in fibl %}
+                        <option value="{{i.id}}">{{i.finame}} - {{i.location}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="employeename" class="bmd-label-floating"> Preliminary person *</label>
+                    <select class="custom-select" data-style="select-with-transition" id="employeename" name="employeename">
+                        <option disabled selected value> -- Select an person -- </option>
+                        {% for i in fibl %}
+                        <option>{{i.finame}} - {{i.location}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                <div class="category form-category">* Required fields</div>
+              </div>
+              <div class="card-footer text-right">
+                <button type="submit" class="btn btn-rose">Create</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> 6c74325bf6798dfe2e4d30e5b82ef5a029b309d3
   {% endblock %}
